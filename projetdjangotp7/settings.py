@@ -64,10 +64,16 @@ DATABASES = {
 # Tests : SQLite en mémoire (comme H2 en mémoire)
 import sys
 if 'test' in sys.argv:
-    DATABASES['default'] = {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:',  # Base mémoire pour tests
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'votre_db',
+        'USER': 'votre_user',
+        'PASSWORD': 'votre_mdp',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
