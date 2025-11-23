@@ -1,0 +1,19 @@
+# Django
+*.pyc
+*~
+__pycache__
+db.sqlite3
+db_dev.sqlite3
+migrations/
+
+# Environnements virtuels
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
