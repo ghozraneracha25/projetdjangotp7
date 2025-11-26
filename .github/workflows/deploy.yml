@@ -1,4 +1,4 @@
-name: Django CI
+name: Django CI/CD and Deploy to Render
 
 on:
   push:
@@ -49,3 +49,15 @@ jobs:
           GITHUB_ACTIONS: true
         run: |
           python manage.py test
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Deploy to Render
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
